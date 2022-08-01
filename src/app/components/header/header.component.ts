@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom, subscribeOn, Subscription } from 'rxjs';
 import { PersistenceService } from 'src/app/services/persistence.service';
@@ -11,7 +12,8 @@ import { PersistenceService } from 'src/app/services/persistence.service';
 export class HeaderComponent implements OnInit {  
   constructor(
     public persistenceService: PersistenceService,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    public router: Router
     ) { }
 
   ngOnInit(): void {
@@ -31,5 +33,9 @@ export class HeaderComponent implements OnInit {
       this.persistenceService.setLanguage(value);
       this.translateService.use(value);
     })
+  }
+
+  goToHome() {
+    this.router.navigate(['/']);
   }
 }

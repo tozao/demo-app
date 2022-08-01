@@ -20,8 +20,8 @@
                     "options": ["DIESEL", "GASOLINE", "GAS"]
                 },
                 {
-                    "name": "year",
-                    "displayName": "YEAR",
+                    "name": "km",
+                    "displayName": "KM",
                     "type": "string"
                 }
             ]
