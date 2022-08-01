@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>MultiCar</span>
+    <span class="header-spacer"></span>
+    <button mat-button (click)="changeLanguage()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>language</mat-icon>
+        <span>{{(persistenceService._language | async | uppercase)}}</span>
+    </button>
+    <button mat-icon-button (click)="changeDarkMode()" aria-label="Example icon-button with share icon">
+        <mat-icon [ngClass]="{'material-icons-outlined': (persistenceService._darkMode | async)}">dark_mode</mat-icon>
+    </button>
+</mat-toolbar>
+

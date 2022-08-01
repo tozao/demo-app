@@ -1,0 +1,63 @@
+<ng-container *ngIf="stepperConfig | async">
+    <div fxLayout='row' fxLayoutGap="48px">
+        <mat-stepper fxFlex="75" linear #stepper>
+            <mat-step *ngFor="let step of (stepperConfig | async)?.steps; let index = index;">
+                <ng-template matStepLabel>{{step.label | translate}}</ng-template>
+                <ng-container *ngTemplateOutlet="step.stepType === 'card' ? card : form; context: { $implicit: step }"></ng-container>
+                
+                <ng-template #card let-step>
+                    <div fxLayout='row' fxLayoutGap="20px">
+                        <ng-container *ngFor="let car of (cars | async)?.list">
+                            <mat-card fxFlex="25">
+                                <mat-card-header>
+                                    <mat-card-title>{{car.name}}</mat-card-title>
+                                    <mat-card-subtitle>{{car.price}} €</mat-card-subtitle>
+                                </mat-card-header>
+                                <img mat-card-image src="../../../assets/images/{{car.image}}.jpg" alt="Photo of a car">
+                                <mat-card-actions>
+                                    <button (click)="saveCar(car)" mat-flat-button matStepperNext color="accent">{{'BUY' | translate}}</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </ng-container>
+                    </div>
+                </ng-template>
+
+                <ng-template #form let-step>
+                    <ng-container *ngIf="order.characteristics">
+                        <ng-container *ngFor="let field of step?.fields">
+                            <div class="form-container" fxLayout='column' fxLayoutGap="20px">
+                                <ng-container [ngSwitch]="true">
+                                    <ng-container *ngSwitchCase="field.type === 'color'">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{field.displayName | translate}}</mat-label>
+                                            <input matInput type="color" [(ngModel)]="order.characteristics[field.name]">
+                                        </mat-form-field>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="field.type === 'select'">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{field.displayName | translate}}</mat-label>
+                                            <mat-select [(ngModel)]="order.characteristics[field.name]" [name]="field.name">
+                                                <option value="" selected></option>
+                                                <mat-option *ngFor="let option of field.options" [value]="option">
+                                                    {{option | translate}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="field.type === 'string'">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{field.displayName | translate}}</mat-label>
+                                            <input matInput type="text" [(ngModel)]="order.characteristics[field.name]">
+                                        </mat-form-field>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </mat-step>
+        </mat-stepper>
+        <app-shopping-cart *ngIf="showShoppingCart" [order]="order"></app-shopping-cart>
+    </div>
+  
+</ng-container>

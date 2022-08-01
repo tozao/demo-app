@@ -1,0 +1,30 @@
+{
+    "steps": [
+        {
+            "label": "STEP_1",
+            "stepType": "card"
+        },
+        {
+            "label": "STEP_2",
+            "stepType": "form",
+            "fields": [
+                {
+                    "name": "color",
+                    "displayName": "COLOR",
+                    "type": "color"
+                },
+                {
+                    "name": "fuel",
+                    "displayName": "FUEL",
+                    "type": "select",
+                    "options": ["DIESEL", "GASOLINE", "GAS"]
+                },
+                {
+                    "name": "year",
+                    "displayName": "YEAR",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

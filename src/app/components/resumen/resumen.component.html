@@ -1,0 +1,15 @@
+<div class="resumen-container">
+    <div class="title">{{'RESUMEN_TITLE' | translate}}</div>
+    <mat-card *ngIf="order">
+        <mat-card-header>
+            <mat-card-title>{{order?.car?.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="../../../assets/images/{{order.car.image}}.jpg" alt="Photo of a car">
+        <mat-card-content>
+            <ng-container *ngFor="let char of order.characteristics | keyvalue">
+                <div *ngIf="char.value">{{char.key}}: {{char.value}}</div>
+            </ng-container>
+            <div>{{order?.car?.price * order.quantity}} €</div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,28 @@
+{
+    "list": [
+        {
+            "id": "CAR_1",
+            "image": "car1",
+            "name": "Mercedes",
+            "price": "30000"
+        },
+        {
+            "id": "CAR_2",
+            "image": "car2",
+            "name": "Ferrari",
+            "price": "100000"
+        },
+        {
+            "id": "CAR_3",
+            "image": "car3",
+            "name": "Chevy",
+            "price": "20000"
+        },
+        {
+            "id": "CAR_4",
+            "image": "car4",
+            "name": "Bugatti",
+            "price": "50000"
+        }
+    ] 
+}

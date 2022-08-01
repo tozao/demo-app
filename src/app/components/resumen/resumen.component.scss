@@ -1,0 +1,19 @@
+.resumen-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+mat-card {
+    width: 40%;
+    margin: 40px;
+}
+
+mat-card .mat-card-image {
+    height: 300px;
+}
+
+.title {
+    font-size: 40px;
+    margin-top: 16px;
+}

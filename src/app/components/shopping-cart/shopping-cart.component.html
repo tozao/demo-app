@@ -1,0 +1,23 @@
+
+<mat-card *ngIf="order">
+    <mat-card-header>
+        <div class="avatar" mat-card-avatar>
+            <img src="../../../assets/images/{{order.car.image}}.jpg" alt="Photo of a car">
+        </div>
+        <mat-card-title>{{order?.car?.name}}</mat-card-title>
+        <mat-card-subtitle>
+            <mat-form-field appearance="outline">
+                <input matInput type="number" min="1" [(ngModel)]="order.quantity">
+            </mat-form-field>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngFor="let char of order.characteristics | keyvalue">
+            <div *ngIf="char.value">{{char.key}}: {{char.value}}</div>
+        </ng-container>
+        <div>{{order?.car?.price * order.quantity}} €</div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="finalizeOrder()" mat-flat-button color="accent">{{'CHECKOUT' | translate}}</button>
+    </mat-card-actions>
+</mat-card>
