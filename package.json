@@ -1,9 +1,10 @@
 {
   "name": "demo-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --hmr",
+    "start:server": "http-server -p 8080 -c-1 dist/demo-app",
     "build": "ng build",
     "buildProd": "ng --configuration=production build",
     "watch": "ng build --watch --configuration development",
@@ -25,6 +26,7 @@
     "@angular/service-worker": "^14.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "http-server": "^14.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
