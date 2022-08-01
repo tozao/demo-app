@@ -8,7 +8,7 @@ import { PersistenceService } from './services/persistence.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demo-app';
+  title = 'MultiCar';
 
   constructor(
     public translate: TranslateService,
